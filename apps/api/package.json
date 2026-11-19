@@ -1,0 +1,19 @@
+{
+  "name": "@repo/api",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#*": "./src/*.ts"
+  },
+  "scripts": {
+    "dev": "tsx watch src/app/main.ts",
+    "start": "tsx src/app/main.ts",
+    "lint": "oxlint --deny-warnings src",
+    "typecheck": "tsc",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@repo/core": "*",
+    "zod": "^4.6.7"
+  }
+}

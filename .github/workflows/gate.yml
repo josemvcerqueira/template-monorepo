@@ -1,0 +1,29 @@
+name: gate
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: gate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Fetch the standards package over HTTPS
+        env:
+          STANDARDS_TOKEN: ${{ secrets.STANDARDS_TOKEN }}
+        run: |
+          auth=""
+          if [ -n "$STANDARDS_TOKEN" ]; then auth="x-access-token:${STANDARDS_TOKEN}@"; fi
+          git config --global url."https://${auth}github.com/".insteadOf ssh://git@github.com/
+      - run: npm ci
+      - run: bash scripts/gate.sh

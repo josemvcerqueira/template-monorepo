@@ -1,0 +1,22 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "lint": {
+      "inputs": [
+        "src/**",
+        ".oxlintrc.json",
+        "$TURBO_ROOT$/node_modules/@interest-protocol/standards/oxlint/**"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "inputs": [
+        "src/**",
+        "tsconfig.json",
+        "$TURBO_ROOT$/node_modules/@interest-protocol/standards/tsconfig.base.json"
+      ]
+    },
+    "test": { "dependsOn": ["^typecheck"], "inputs": ["src/**", "vitest.config.ts"] },
+    "dev": { "cache": false, "persistent": true }
+  }
+}
