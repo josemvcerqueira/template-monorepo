@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 step() { printf '\n== %s ==\n' "$1"; }
 scope=(--affected)
 [ "${GATE_ALL:-0}" = "1" ] && scope=()
-step "1/4 standard";                       npx --no-install ip-standards-verify
-step "2/4 oxfmt";                          npx --no-install oxfmt --check .
-step "3/4 lint, typecheck, test (turbo)";  npx --no-install turbo run lint typecheck test "${scope[@]}" --output-logs=errors-only
-step "4/4 knip";                           npx --no-install knip --no-progress
+step "1/4 standard";                       bunx ip-standards-verify
+step "2/4 oxfmt";                          bunx oxfmt --check .
+step "3/4 lint, typecheck, test (turbo)";  bunx turbo run lint typecheck test "${scope[@]}" --output-logs=errors-only
+step "4/4 knip";                           bunx knip --no-progress

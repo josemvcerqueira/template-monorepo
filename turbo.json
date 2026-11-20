@@ -16,7 +16,7 @@
         "$TURBO_ROOT$/node_modules/@interest-protocol/standards/tsconfig.base.json"
       ]
     },
-    "test": { "dependsOn": ["^typecheck"], "inputs": ["src/**", "vitest.config.ts"] },
+    "test": { "dependsOn": ["^typecheck"], "inputs": ["src/**"] },
     "dev": { "cache": false, "persistent": true }
   }
 }

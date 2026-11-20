@@ -11,6 +11,6 @@
   "scripts": {
     "lint": "oxlint --deny-warnings src",
     "typecheck": "tsc",
-    "test": "vitest run"
+    "test": "bun test"
   }
 }
