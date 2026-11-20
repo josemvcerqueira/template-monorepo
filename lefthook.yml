@@ -3,12 +3,12 @@ assert_lefthook_installed: true
 pre-commit:
   jobs:
     - name: standard
-      run: npx --no-install ip-standards-verify
+      run: bunx ip-standards-verify
     - name: oxfmt
-      run: npx --no-install oxfmt --check --no-error-on-unmatched-pattern {staged_files}
+      run: bunx oxfmt --check --no-error-on-unmatched-pattern {staged_files}
     - name: lint and typecheck affected workspaces
       glob: "*.{ts,tsx,js,mjs,json}"
-      run: npx --no-install turbo run lint typecheck --affected --output-logs=errors-only
+      run: bunx turbo run lint typecheck --affected --output-logs=errors-only
 pre-push:
   jobs:
     - name: gate

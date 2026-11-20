@@ -6,11 +6,11 @@
     "#*": "./src/*.ts"
   },
   "scripts": {
-    "dev": "tsx watch src/app/main.ts",
-    "start": "tsx src/app/main.ts",
+    "dev": "bun --watch src/app/main.ts",
+    "start": "bun src/app/main.ts",
     "lint": "oxlint --deny-warnings src",
     "typecheck": "tsc",
-    "test": "vitest run"
+    "test": "bun test"
   },
   "dependencies": {
     "@repo/core": "*",
